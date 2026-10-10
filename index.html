@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prudent Classes | Guided by Saddam Sir</title>
+<style>
+:root{--primary:#5b21b6;--secondary:#2563eb;--accent:#f59e0b;--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#64748b;--danger:#dc2626}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,#4c1d95,#2563eb);color:#fff;padding:18px 5%;position:sticky;top:0;z-index:10;box-shadow:0 4px 16px #0002}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1200px;margin:auto}.brand{font-size:25px;font-weight:800}.brand small{display:block;font-size:11px;letter-spacing:1px;color:#ddd}
+nav button,.btn{border:0;border-radius:9px;padding:11px 16px;font-weight:700;cursor:pointer}
+nav button{background:#ffffff22;color:#fff;margin-left:6px}.btn-primary{background:var(--primary);color:#fff}.btn-blue{background:var(--secondary);color:#fff}.btn-light{background:#eef2ff;color:#3730a3}.btn-danger{background:#fee2e2;color:var(--danger)}
+.hero{padding:65px 5%;background:linear-gradient(120deg,#ede9fe,#dbeafe)}.hero-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.3fr .7fr;gap:35px;align-items:center}.hero h1{font-size:clamp(32px,5vw,58px);margin:0 0 15px;color:#312e81}.hero p{font-size:18px;line-height:1.6;color:#334155}.hero-card{background:#fff;border-radius:22px;padding:28px;box-shadow:0 15px 40px #312e811c;text-align:center}.hero-card .emoji{font-size:65px}
+.container{max-width:1200px;margin:35px auto;padding:0 18px}.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}.section-title h2{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.card{background:var(--card);border-radius:16px;padding:20px;box-shadow:0 5px 20px #0f172a0d;border:1px solid #e2e8f0}.class-card{cursor:pointer;transition:.2s}.class-card:hover{transform:translateY(-4px);box-shadow:0 10px 25px #0f172a18}.class-card h3{margin:10px 0 6px}.icon{font-size:36px}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0}input,select,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px;background:#fff;font:inherit}textarea{min-height:90px;resize:vertical}label{font-weight:700;font-size:13px;display:block;margin:10px 0 6px}
+.content-card{display:flex;flex-direction:column;gap:10px}.tag{display:inline-block;background:#ede9fe;color:#5b21b6;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:700;margin:2px}.content-card h3{margin:5px 0}.content-card p{color:var(--muted);margin:0;line-height:1.45}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.notice{background:#fff7ed;border-left:5px solid var(--accent);padding:14px;border-radius:10px;margin-bottom:10px}
+footer{background:#111827;color:#e5e7eb;padding:30px 5%;margin-top:50px;text-align:center}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:30;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.modal-box{background:#fff;border-radius:16px;padding:25px;max-width:650px;width:100%;max-height:92vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#f1f5f9;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:20px}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.admin-tabs button.active{background:var(--primary);color:#fff}.hidden{display:none!important}.empty{text-align:center;padding:35px;color:var(--muted);background:#fff;border-radius:15px}
+@media(max-width:750px){.hero-inner{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.nav nav{width:100%}.nav button{margin:3px 3px 0 0}.hero{padding:40px 5%}}
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<div class="brand">Prudent Classes<small>Guided by Saddam Sir</small></div>
+<nav>
+<button onclick="showSection('home')">Home</button>
+<button onclick="showSection('study')">Study Material</button>
+<button onclick="openAdmin()">Teacher Panel</button>
+</nav>
+</div>
+</header>
+
+<main id="homeSection">
+<section class="hero"><div class="hero-inner">
+<div><h1>Learn Every Concept. Apply It in Life.</h1><p>हमें पढ़ना नहीं, हर चीज़ को सीखना है—हर चीज़ को जीवन में उतारना है।</p><button class="btn btn-primary" onclick="showSection('study')">Explore Study Material</button></div>
+<div class="hero-card"><div class="emoji">📚</div><h2>Prudent Classes</h2><p>Classes 8–12 • CBSE • JAC • Integrated Courses</p></div>
+</div></section>
+<div class="container">
+<div class="section-title"><h2>Choose Your Class</h2></div>
+<div class="grid">
+<div class="card class-card" onclick="quickFilter('8')"><div class="icon">🎒</div><h3>Class 8</h3><p>CBSE and JAC Board</p></div>
+<div class="card class-card" onclick="quickFilter('9')"><div class="icon">📘</div><h3>Class 9</h3><p>CBSE and JAC Board</p></div>
+<div class="card class-card" onclick="quickFilter('10')"><div class="icon">📝</div><h3>Class 10</h3><p>CBSE and JAC Board</p></div>
+<div class="card class-card" onclick="quickFilter('11')"><div class="icon">🔬</div><h3>Class 11</h3><p>Science, Arts, Commerce</p></div>
+<div class="card class-card" onclick="quickFilter('12')"><div class="icon">🎓</div><h3>Class 12</h3><p>Science, Arts, Commerce</p></div>
+<div class="card class-card" onclick="quickFilter('Integrated')"><div class="icon">🚀</div><h3>Integrated</h3><p>JEE • NEET • CUET • NDA</p></div>
+</div>
+</div>
+</main>
+
+<section id="studySection" class="container hidden">
+<div class="section-title"><h2>Study Material</h2><button class="btn btn-light" onclick="showSection('home')">← Home</button></div>
+<div class="controls">
+<select id="filterClass" onchange="renderContent()"><option value="">All Classes</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>Integrated</option></select>
+<select id="filterBoard" onchange="renderContent()"><option value="">All Boards</option><option>CBSE</option><option>JAC</option><option>All Boards</option></select>
+<select id="filterType" onchange="renderContent()"><option value="">All Content</option><option>Lecture</option><option>DPP</option><option>Class Notes</option><option>Test Series</option><option>Crash Course</option><option>Library</option></select>
+<input id="searchBox" oninput="renderContent()" placeholder="Search title, subject or chapter...">
+</div>
+<div id="contentGrid" class="grid"></div>
+</section>
+
+<section class="container">
+<div class="section-title"><h2>Latest Notices</h2></div><div id="noticeList"></div>
+</section>
+
+<footer>© 2026 Prudent Classes • Guided by Saddam Sir</footer>
+
+<div id="adminModal" class="modal"><div class="modal-box">
+<div class="modal-head"><h2>Teacher Admin Panel</h2><button class="close" onclick="closeAdmin()">×</button></div>
+<div id="loginBox">
+<p>Enter the demo teacher password to manage content.</p>
+<label>Password</label><input id="adminPassword" type="password" placeholder="Default: prudent123">
+<button class="btn btn-primary" onclick="loginAdmin()">Login</button>
+</div>
+<div id="adminBox" class="hidden">
+<div class="admin-tabs"><button class="btn btn-light active" onclick="adminTab('add',this)">Add Content</button><button class="btn btn-light" onclick="adminTab('manage',this)">Manage Content</button><button class="btn btn-light" onclick="adminTab('notice',this)">Add Notice</button></div>
+<div id="addTab">
+<label>Content Type</label><select id="newType"><option>Lecture</option><option>DPP</option><option>Class Notes</option><option>Test Series</option><option>Crash Course</option><option>Library</option></select>
+<label>Class</label><select id="newClass"><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>Integrated</option></select>
+<label>Board / Exam</label><select id="newBoard"><option>CBSE</option><option>JAC</option><option>All Boards</option><option>JEE</option><option>NEET</option><option>CUET</option><option>NDA</option></select>
+<label>Subject</label><input id="newSubject" placeholder="Physics / Maths / Chemistry...">
+<label>Chapter</label><input id="newChapter" placeholder="Chapter name">
+<label>Title</label><input id="newTitle" placeholder="Content title">
+<label>Description</label><textarea id="newDescription" placeholder="Short description"></textarea>
+<label>Content Link</label><input id="newLink" placeholder="YouTube, Google Drive or PDF link">
+button
+<button class="btn btn-primary" onclick="addContent()">Publish Content</button>
+</div>
+<div id="manageTab" class="hidden"><div id="manageList"></div></div>
+<div id="noticeTab" class="hidden">
+<label>Notice Title</label><input id="noticeTitle">
+<label>Notice Message</label><textarea id="noticeMessage"></textarea>
+<button class="btn btn-primary" onclick="addNotice()">Publish Notice</button>
+<div id="manageNotices" style="margin-top:20px"></div>
+</div>
+</div></div></div>
+
+<script>
+const KEY='prudent_content_v1', NKEY='prudent_notices_v1';
+let contents=JSON.parse(localStorage.getItem(KEY)||'[]');
+let notices=JSON.parse(localStorage.getItem(NKEY)||'[]');
+
+function save(){localStorage.setItem(KEY,JSON.stringify(contents));localStorage.setItem(NKEY,JSON.stringify(notices))}
+function showSection(s){document.getElementById('homeSection').classList.toggle('hidden',s!=='home');document.getElementById('studySection').classList.toggle('hidden',s!=='study');if(s==='study')renderContent();window.scrollTo({top:0,behavior:'smooth'})}
+function quickFilter(c){showSection('study');document.getElementById('filterClass').value=c;renderContent()}
+function renderContent(){
+ let c=contents.filter(x=>(!filterClass.value||x.class===filterClass.value)&&(!filterBoard.value||x.board===filterBoard.value)&&(!filterType.value||x.type===filterType.value)&&((x.title+' '+x.subject+' '+x.chapter+' '+x.description).toLowerCase().includes(searchBox.value.toLowerCase())));
+ contentGrid.innerHTML=c.length?c.map(x=>`<div class="card content-card"><div><span class="tag">${x.type}</span><span class="tag">Class ${x.class}</span><span class="tag">${x.board}</span></div><h3>${esc(x.title)}</h3><p><b>${esc(x.subject)}</b> • ${esc(x.chapter)}</p><p>${esc(x.description)}</p><div class="actions">${x.link?`<a class="btn btn-blue" href="${safeUrl(x.link)}" target="_blank" rel="noopener">Open Content ↗</a>`:''}</div></div>`).join(''):'<div class="empty">No content found. Teacher can add content from the Teacher Panel.</div>';
+}
+function renderNotices(){noticeList.innerHTML=notices.length?notices.slice().reverse().map(n=>`<div class="notice"><b>${esc(n.title)}</b><div>${esc(n.message)}</div><small>${n.date}</small></div>`).join(''):'<div class="empty">No notices published yet.</div>'}
+function openAdmin(){adminModal.classList.add('show')}
+function closeAdmin(){adminModal.classList.remove('show')}
+function loginAdmin(){if(adminPassword.value==='prudent123'){loginBox.classList.add('hidden');adminBox.classList.remove('hidden');renderManage();renderManageNotices()}else alert('Incorrect password. Default password is prudent123.')}
+function adminTab(t,b){['addTab','manageTab','noticeTab'].forEach(id=>document.getElementById(id).classList.add('hidden'));document.getElementById(t+'Tab').classList.remove('hidden');document.querySelectorAll('.admin-tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');if(t==='manage')renderManage();if(t==='notice')renderManageNotices()}
+function addContent(){
+ let x={id:Date.now(),type:newType.value,class:newClass.value,board:newBoard.value,subject:newSubject.value.trim(),chapter:newChapter.value.trim(),title:newTitle.value.trim(),description:newDescription.value.trim(),link:newLink.value.trim()};
+ if(!x.title||!x.subject||!x.link){alert('Please fill Title, Subject and Content Link.');return}
+ contents.push(x);save();alert('Content published successfully!');document.querySelectorAll('#addTab input,#addTab textarea').forEach(e=>e.value='');renderManage();renderContent()
+}
+function renderManage(){manageList.innerHTML=contents.length?contents.slice().reverse().map(x=>`<div class="card" style="margin-bottom:10px"><b>${esc(x.title)}</b><p>${x.type} • Class ${x.class} • ${x.subject}</p><button class="btn btn-danger" onclick="deleteContent(${x.id})">Delete</button></div>`).join(''):'<div class="empty">No content added.</div>'}
+function deleteContent(id){if(confirm('Delete this content?')){contents=contents.filter(x=>x.id!==id);save();renderManage();renderContent()}}
+function addNotice(){let title=noticeTitle.value.trim(),message=noticeMessage.value.trim();if(!title||!message){alert('Fill both fields.');return}notices.push({id:Date.now(),title,message,date:new Date().toLocaleDateString()});save();noticeTitle.value='';noticeMessage.value='';alert('Notice published!');renderNotices();renderManageNotices()}
+function renderManageNotices(){manageNotices.innerHTML=notices.length?notices.slice().reverse().map(n=>`<div class="card" style="margin-bottom:10px"><b>${esc(n.title)}</b><p>${esc(n.message)}</p><button class="btn btn-danger" onclick="deleteNotice(${n.id})">Delete</button></div>`).join(''):'<div class="empty">No notices.</div>'}
+function deleteNotice(id){notices=notices.filter(n=>n.id!==id);save();renderNotices();renderManageNotices()}
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function safeUrl(u){return /^https?:\/\//i.test(u)?u:'#'}
+renderContent();renderNotices();
+</script>
+</body>
+</html>
